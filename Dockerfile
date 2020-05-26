@@ -22,15 +22,15 @@ COPY asset/nginx.conf /etc/nginx/nginx.conf
 COPY asset/mime.types /etc/nginx/mime.types
 COPY asset/default.conf /etc/nginx/conf.d/default.conf
 
+COPY asset/vhost.template /etc/nginx/conf.d/vhost.template
+COPY asset/write_vhosts.pl /sbin/write_vhosts.pl
+RUN chmod +x /sbin/write_vhosts.pl
+
 COPY asset/rc.sh /sbin/rc.sh
 RUN chmod +x /sbin/rc.sh
 COPY asset/dumb-init_1.2.2_amd64 /bin/dumbinit
 RUN chmod +x /bin/dumbinit
 COPY asset/attach.pl /sbin/attach.pl
 RUN chmod +x /sbin/attach.pl
-
-COPY asset/vhost.template /etc/nginx/conf.d/vhost.template
-COPY asset/write_vhosts.pl /sbin/write_vhosts.pl
-RUN chmod +x /sbin/write_vhosts.pl
 
 ENTRYPOINT ["/bin/dumbinit","/sbin/rc.sh"]

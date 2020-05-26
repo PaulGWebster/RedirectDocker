@@ -1,2 +1,3 @@
 # Ignore our local dev files
 /.dev
+/docker-compose.override.yml
