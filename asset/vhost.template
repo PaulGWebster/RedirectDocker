@@ -8,16 +8,16 @@ server {
 }
 
 # Split http and https requests
-upstream http {
+upstream __POOLNAME__ {
      server __HTTPHOST__:__HTTPPORT__;
 }
 
-upstream https {
-     server __HTTPSHOST__:__HTTPPORT__;
+upstream __POOLNAME__s {
+     server __HTTPSHOST__:__HTTPSPORT__;
 }
 
 map $http_x_server_select $__POOLNAME__ {
-     default "http";
-     http "http";
-     https "https";
+     default "__POOLNAME__";
+     http "__POOLNAME__";
+     https "__POOLNAME__s";
 }

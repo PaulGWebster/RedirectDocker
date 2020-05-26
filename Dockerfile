@@ -33,4 +33,5 @@ RUN chmod +x /bin/dumbinit
 COPY asset/attach.pl /sbin/attach.pl
 RUN chmod +x /sbin/attach.pl
 
+
 ENTRYPOINT ["/bin/dumbinit","/sbin/rc.sh"]

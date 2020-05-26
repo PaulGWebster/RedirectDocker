@@ -46,10 +46,10 @@ sub write_vhost {
 
     $base =~ s/__SERVERNAME__/$domain/g;
     $base =~ s/__POOLNAME__/$poolname/g;
-    $base =~ s/__HTTPHOST__/\Q$httphost\E/g;
+    $base =~ s/__HTTPHOST__/$httphost/g;
     $base =~ s/__HTTPSHOST__/$httpshost/g;
     $base =~ s/__HTTPPORT__/\Q$httpport\E/g;
-    $base =~ s/__HTTPSPORT__/$httpsport/g;
+    $base =~ s/__HTTPSPORT__/\Q$httpsport\E/g;
 
     my $path = join('','/etc/nginx/conf.d/',$domain,'.conf');
     open(my $fh,'>',$path);
