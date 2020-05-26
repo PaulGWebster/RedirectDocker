@@ -19,8 +19,7 @@ If you was to use a line such as:
 
     NGINX_VHOST_MYSITE: "something.mydomain.com:127.0.0.1:80:container:80"
 
-All requests will automatically be sent a redirected to https, the container runs a server on 127.0.0.1:80, 
-that simply redirects back to https, notable:
+All requests will automatically be sent a redirect header (303 - other) to https, this is due to the default configuration of the nginx server in the container notable:
 
     server {
         listen 127.0.0.1:80;
@@ -28,3 +27,5 @@ that simply redirects back to https, notable:
             return 303 https://$host$request_uri;
         }
     }
+    
+The reason why 303 instaed of 301 is that 303 is not cached! which means in future if you wished to serve something over http, you will be able to without issue.
