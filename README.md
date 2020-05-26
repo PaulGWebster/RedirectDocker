@@ -12,3 +12,19 @@ works.
 
 The image also contains ncat,nmap,socat, netcat, redir gcc and perl(+ssl +poe) so you can redirect what 
 you like in difference to nginx as well :)
+
+## Redirect to HTTPS
+
+If you was to use a line such as:
+
+    NGINX_VHOST_MYSITE: "something.mydomain.com:127.0.0.1:80:container:80"
+
+All requests will automatically be sent a redirected to https, the container runs a server on 127.0.0.1:80, 
+that simply redirects back to https, notable:
+
+    server {
+        listen 127.0.0.1:80;
+        location / {
+            return 303 https://$host$request_uri;
+        }
+    }
