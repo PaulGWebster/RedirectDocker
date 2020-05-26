@@ -9,3 +9,6 @@ As an enviroment variable add: DOMAIN:TARGET_HTTP_HOST:TARGET_HTTP_PORT:TARGET_H
 An example of this is provided in the docker-compose.yml in the container, note that 'web' is being played
 by netcat, to simply show the incoming requests. You should remove this once you have learned how the setup
 works.
+
+The image also contains ncat,nmap,socat, netcat, redir gcc and perl(+ssl +poe) so you can redirect what 
+you like in difference to nginx as well :)
