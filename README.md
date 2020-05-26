@@ -13,6 +13,17 @@ works.
 The image also contains ncat,nmap,socat, netcat, redir gcc and perl(+ssl +poe) so you can redirect what 
 you like in difference to nginx as well :)
 
+## Logging
+
+This image will log to STDERR so in docker-compose it will show things such as:
+
+```
+proxy_1 | access.log: 172.30.0.1 - - [26/May/2020:21:16:43 +0100] "GET / HTTP/1.0" 200 11393 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.136 Safari/537.36" "-"
+```
+
+Ontop of this it reserves the handler _log on the outside edge, so if you was to visit http://IP_OF_CONTAINER/_log you 
+will get both the access.log and error.log as a file list.
+
 ## Redirect to HTTPS
 
 If you was to use a line such as:
